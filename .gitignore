@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtualenvs / uv
+.venv/
+venv/
+
+# Env / secrets
+.env
+.env.*
+
+# Trace outputs
+*.jsonl
+!examples/cassettes/*.jsonl
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# OS
+.DS_Store
