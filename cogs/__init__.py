@@ -14,7 +14,7 @@ from __future__ import annotations
 from .agent import Agent, AgentError
 from .context import ContextManager
 from .permissions import Decision, PermissionPolicy, allow_all, gated
-from .provider import AnthropicProvider, Provider
+from .provider import AnthropicProvider, Provider, SarvamProvider
 from .tools import ToolError, ToolRegistry, tool
 from .tools_builtin import default_registry
 from .trace import RecordingProvider, ReplayProvider, Tracer
@@ -36,6 +36,7 @@ __all__ = [
     "Agent",
     "AgentError",
     "AnthropicProvider",
+    "SarvamProvider",
     "Provider",
     "ToolRegistry",
     "tool",
