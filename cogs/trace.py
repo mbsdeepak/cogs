@@ -35,12 +35,15 @@ from .types import (
 
 
 def _turn_to_dict(turn: AssistantTurn) -> dict[str, Any]:
-    return {
+    d = {
         "text": turn.text,
         "tool_calls": [asdict(c) for c in turn.tool_calls],
         "stop_reason": turn.stop_reason.value,
         "usage": asdict(turn.usage),
     }
+    if turn.reasoning:
+        d["reasoning"] = turn.reasoning
+    return d
 
 
 def _turn_from_dict(data: dict[str, Any]) -> AssistantTurn:
@@ -52,6 +55,7 @@ def _turn_from_dict(data: dict[str, Any]) -> AssistantTurn:
         ],
         stop_reason=StopReason(data["stop_reason"]),
         usage=Usage(**data["usage"]),
+        reasoning=data.get("reasoning", ""),
     )
 
 

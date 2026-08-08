@@ -105,12 +105,19 @@ class AssistantTurn:
 
     This is the unit the loop reasons about and the tracer records. Replaying a
     recorded ``AssistantTurn`` reproduces a run exactly, with zero network I/O.
+
+    ``reasoning`` holds a reasoning model's separate thinking output (e.g.
+    Sarvam's ``reasoning_content``) when present. It is kept apart from ``text``
+    so chain-of-thought never leaks into the user-facing answer; the agent loop
+    ignores it, but tracing/observability can surface it. Empty for providers
+    that do not return it.
     """
 
     text: str
     tool_calls: list[ToolCall]
     stop_reason: StopReason
     usage: Usage
+    reasoning: str = ""
 
 
 @dataclass(frozen=True)
